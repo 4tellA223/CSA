@@ -30,9 +30,9 @@ public class Driver{
         //cylinder mehtods
         System.out.println(cy1.toString());
         System.out.println("getRadius()---> "+ cy1.getRadius());
-        System.out.println("circumference()---> " + cy1.getHeight());
-        System.out.println("area()---> " + cy1.surfaceArea());
-        System.out.println("area()---> " + cy1.volume());
+        System.out.println("getHeight()---> " + cy1.getHeight());
+        System.out.println("sufaceArea()---> " + cy1.surfaceArea());
+        System.out.println("volume()---> " + cy1.volume());
 
         System.out.println("");
         
@@ -41,9 +41,8 @@ public class Driver{
         //cylinder methods
         System.out.println(cy2.toString());
         System.out.println("getRadius()---> "+ cy2.getRadius());
-        System.out.println("getRadius()---> "+ cy2.getRadius());
-        System.out.println("circumference()---> " + cy2.getHeight());
-        System.out.println("area()---> " + cy2.surfaceArea());
-        System.out.println("area()---> " + cy2.volume());
+        System.out.println("getHeight()---> " + cy2.getHeight());
+        System.out.println("surfaceArea()---> " + cy2.surfaceArea());
+        System.out.println("volume()---> " + cy2.volume());
     }
 }

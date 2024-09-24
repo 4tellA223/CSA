@@ -32,13 +32,13 @@ public class Cylinder{
 
     //method to get surface area
     public double surfaceArea(){
-        double sa = 2*Math.PI*base.getRadius()*height + 2*Math.PI*Math.pow(base.getRadius(),2);
+        double sa = 2*base.area() + base.circumference()*height;
         return sa;
     }
 
     //method to get volume
     public double volume(){
-        double v = Math.PI * Math.pow(base.getRadius(),2) *height;
+        double v =base.area() *height;
         return v;
     }
 }
