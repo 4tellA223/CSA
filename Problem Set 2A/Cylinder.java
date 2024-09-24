@@ -1,17 +1,17 @@
 public class Cylinder{
     //instance varibale
     double height;
-    double base;
+    Circle base;
 
     //default constructors
     Cylinder(){
         height =1;
-        base = 1;  
+        base = new Circle();  
     }
     //constructor with parameter
     Cylinder(double height, double base){
         this.height = height;
-        this.base = base;
+        this.base = new Circle(base);
     }
 
     //method to string
@@ -22,7 +22,7 @@ public class Cylinder{
 
     //method get radisu
     public double getRadius(){
-        return base;
+        return base.getRadius();
     }
 
     //method get height
@@ -32,13 +32,13 @@ public class Cylinder{
 
     //method to get surface area
     public double surfaceArea(){
-        double sa = 2*Math.PI*base*height + 2*Math.PI*Math.pow(base,2);
+        double sa = 2*Math.PI*base.getRadius()*height + 2*Math.PI*Math.pow(base.getRadius(),2);
         return sa;
     }
 
     //method to get volume
     public double volume(){
-        double v = Math.PI * Math.pow(base,2) *height;
+        double v = Math.PI * Math.pow(base.getRadius(),2) *height;
         return v;
     }
 }
