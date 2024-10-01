@@ -33,5 +33,14 @@ class Driver {
         String answer4 = input.nextLine();
         System.out.println("The swapped word is " + sTools.swapLastTwo(answer4));
         System.out.println("---------------------");
+        
+        //Front Again
+        System.out.println("fontAgain test cases:" );
+        System.out.println("Enter a word: ");
+        String answer5 = input.nextLine();
+        System.out.println("Enter a number that is less or equal to the length of the word: ");
+        int answer6 = input.nextInt();
+        System.out.println("The return value is " + sTools.frontAgain(answer5,answer6));
+        System.out.println("---------------------");
     }
 }

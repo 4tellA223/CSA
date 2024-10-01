@@ -21,10 +21,10 @@ class StringTools {
         return result;
     }
     public String swapLastTwo (String str){
-        String s1= str.substring(str.length()-2);
+        String s1= str.substring(str.length()-2,str.length()-1);
         String s2= str.substring(str.length()-1);
-        String str1 = str.substring(0,str.indexOsf(s1));
-        return str1 +s2+s1;
+        String str1 = str.substring(0,str.indexOf(s1));
+        return str1 +s2 + s1;
     
     }
     public boolean frontAgain (String str, int n){
