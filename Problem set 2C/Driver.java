@@ -54,7 +54,7 @@ class Driver {
         System.out.print("Increases by:");
         double c =input.nextDouble();
         double answer4 = formula.findArithmeticSeriesSum(b,c,a);
-        System.out.println("The sum of the first " + a + " terms of an arithmetic series that starts with "+b+"and increases by"+c+" is "+answer4);
+        System.out.println("The sum of the first " + a + " terms of an arithmetic series that starts with "+b+" and increases by "+c+" is "+answer4);
     
         System.out.println("SUM OF A GEOMETRIC SERIES");
         System.out.print("Number of terms:");
@@ -63,8 +63,14 @@ class Driver {
         double y =input.nextDouble();
         System.out.print("Increases by:");
         double z =input.nextDouble();
-        double answer5 = formula.findArithmeticSeriesSum(y,z,x);
-        System.out.println("The sum of the first " + x + " terms of an finite geometric series that starts with "+y+"and increases by"+z+" is "+answer5);
+        double answer5 = formula.findGeometricSeriesSum(y,z,x);
+        System.out.println("The sum of the first " + x + " terms of an finite geometric series that starts with "+y+" and increases by "+z+" is "+answer5);
+    
+        System.out.println("DIE ROLLER");
+        System.out.print("How many sides does your die have?");
+        int s = input.nextInt();
+        int answer6 = formula.rollDie(s);
+        System.out.println("Rolling a " +s+"-sided die ... you got a "+answer6+"!");
     }
         
     }

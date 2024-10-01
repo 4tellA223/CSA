@@ -35,7 +35,7 @@ public class Formulas{
     } 
     
     public int rollDie (int sides){
-    int result = (int)(Math.random()*6)+1;
+    int result = (int)(Math.random()*sides)+1;
     return result;
     }
 
