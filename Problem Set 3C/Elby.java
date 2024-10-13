@@ -18,11 +18,17 @@ public class Elby {
         String response = "";
         String trim = statement.trim();
 
-        if(findKeyword(statement,"you",statement.indexOf("you"))>=0 && statement.indexOf("me")>=0){
+        if(findKeyword(statement,"you",statement.indexOf("you"))>=0 && findKeyword(statement,"me",statement.indexOf("me"))>=0){
             response = transformYouMeStatement(statement);
             return response;
-        } if(statement.indexOf("I want to")>=0){
+        } if(findKeyword(statement,"I wan to",statement.indexOf("I want to"))>=0){
             response = transformIWantToStatement(statement);
+            return response;
+        }if(findKeyword(statement,"I want",statement.indexOf("I want"))>=0){
+            response = transformIWantStatement(statement);
+            return response;
+        }if(findKeyword(statement,"I",statement.indexOf("I"))>=0 && findKeyword(statement,"you",statement.indexOf("you"))>=0){
+            response = transformIMeStatement(statement);
             return response;
         }
 
@@ -77,7 +83,7 @@ public class Elby {
      * @param goal the string to search for
      * @param startPos the character of the string to begin the search at
      * @return the index of the first occurrence of goal in statement or -1 if it's
-     * 	not found
+     *     not found
      */
 
     public int findKeyword(String statement, String goal, int startPos) {
@@ -114,7 +120,6 @@ public class Elby {
         }
         return -1;
     }
-
 
     /**
      * Pick a default response to use if nothing else fits.
@@ -187,20 +192,49 @@ public class Elby {
         String restOfStatement = statement.substring(pos + 9).trim();
         return "What would it mean to " + restOfStatement + "?";
     }
-    
-    /**
- * Take a statement with "I want <something>." and transform it
- * into Would you really be happy if you had <something>?
- *
- * @param statement the user statement, assumed to contain "I want"
- * @return the transformed statement
- */
-public String transformIWantStatement(String statement){
-   // ADD CODE HERE
-   statement =statement.trim();
-   return "Would you really be happy if you had ...";
-}
 
+    /**
+     * Take a statement with "I want <something>." and transform it
+     * into Would you really be happy if you had <something>?
+     *
+     * @param statement the user statement, assumed to contain "I want"
+     * @return the transformed statement
+     */
+    public String transformIWantStatement(String statement){
+        // ADD CODE HERE
+        statement =statement.trim();
+        String lastChar = statement.substring(statement.length() - 1);
+        if (lastChar.equals(".")) {
+            statement = statement.substring(0, statement.length() - 1);
+        }
+        int pos = findKeyword(statement, "I want", 0);
+        String restOfStatement = statement.substring(pos+6).trim();
+        return "Would you really be happy if you had "+restOfStatement+"?";
+    }
+
+    /**
+     * Take a statement with "I <something> you" and transform it into
+     * "Why do you <something> me?"
+     *
+     * @param statement the user statement, assumed to contain "I" followed by
+     * 	something "you"
+     * @return the transformed statement
+     */
+    public String transformIMeStatement(String statement) {
+        // ADD CODE HERE
+        
+        statement = statement.trim();
+        String lastChar = statement.substring(statement.length() - 1);
+        if (lastChar.equals(".")) {
+            statement = statement.substring(0, statement.length() - 1);
+        }
+
+        int posOfYou = findKeyword(statement, "you", 0);
+        int posOfI  = findKeyword(statement, "I",  posOfYou + 3);
+
+        String restOfStatement = statement.substring(posOfI + 2, posOfYou).trim();
+        return "Why do you "+restOfStatement+ " me ?";
+    }
 
 
 }
