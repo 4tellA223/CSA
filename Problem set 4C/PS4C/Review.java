@@ -186,9 +186,12 @@ public class Review {
             return 1;
         }
     }
-    
-    public static String fakeReview(){
-        
-    
+
+    public static String fakeReview(String fileName){
+        String result = textToString(fileName);
+        while(result.indexOf("*")>=0){
+            result = result.substring(0,result.indexOf("*"))+Review.randomPositiveAdj()+result.substring(result.substring(result.indexOf("*")).indexOf(" ")+result.indexOf("*"));
+        }
+        return result;
     }
 }
