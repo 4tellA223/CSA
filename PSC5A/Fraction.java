@@ -101,5 +101,23 @@ public class Fraction{
         }
         return a;
     }
+    
+    public static Fraction RandomFraction(){
+        int num = (int)(Math.random()*20)+1;
+        int denom = (int)(Math.random()*10)+1;
+        Fraction random = new Fraction(num,denom);
+        random.reduce();
+        return random;
+    }
+    
+    public static boolean CompareFraction( Fraction a, Fraction b){
+        a.reduce();
+        b.reduce();
+        
+        if(subtract(a,b).toDouble() == 0){
+            return true;
+        }
+        return false;
+    }
 
 }
