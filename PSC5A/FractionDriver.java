@@ -22,14 +22,17 @@ public class FractionDriver{
         while(game){
             Fraction a = Fraction.RandomFraction();
             Fraction b = Fraction.RandomFraction();
+            System.out.println(a.toString() +" + " + b.toString());
             Fraction correctAnswer = Fraction.add(a,b);
 
             Scanner input = new Scanner(System.in);
             String answer =  input.nextLine();
             if(answer.equals("quit")){
+              
                 Fraction ratio = new Fraction(countWin,countRounds);
-                double percent = countWin/countRounds;
-                System.out.println("Your win/loss ratio was" + ratio.toString() + ", for a scroe of " + percent +" percent!");
+                double percent = (double)countWin/countRounds*100;
+                System.out.println("Your win/loss ratio was " + ratio.toString() + " , for a score of " + percent +" percent!");
+                game = false;
             }
             Fraction userAnswer  = new Fraction(answer);
             if(Fraction.CompareFraction(correctAnswer,userAnswer) ){
@@ -37,8 +40,9 @@ public class FractionDriver{
                 countWin ++;
                 countRounds++;
             }else{
-                System.out.println("Wrong, the answer was" + correctAnswer);
+                System.out.println("Wrong, the answer was " + correctAnswer);
                 countRounds++;
+                //game = false;
             }
 
         }

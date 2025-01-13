@@ -16,10 +16,10 @@ public class Fraction{
     }
 
     public Fraction(String frac){
+        if(frac.equals("quit")) return;
         if (Integer.parseInt(frac.substring(frac.indexOf("/")+1)) == 0) return;
         numerator = Integer.parseInt(frac.substring(0,frac.indexOf("/")));
         denominator = Integer.parseInt(frac.substring(frac.indexOf("/")+1));
-
     }
 
     //Accessor Methods
@@ -80,14 +80,15 @@ public class Fraction{
     }
     static Fraction add(Fraction a, Fraction b){
         int top = a.numerator*b.denominator + b.numerator* a.denominator;
-        int bottom = a.numerator*b.numerator;
+        int bottom = a.denominator*b.denominator;
+        //int bottom  = a.numerator*b.denominator;
         Fraction x = new Fraction (top, bottom);
         x.reduce();
         return x;
     }
     static Fraction subtract(Fraction a, Fraction b){
         int top = a.numerator*b.denominator - b.numerator*a.denominator;
-        int bottom = a.numerator*b.numerator;
+        int bottom = a.denominator*b.denominator;
         Fraction x = new Fraction (top, bottom);
         x.reduce();
          return x;
@@ -103,7 +104,7 @@ public class Fraction{
     }
     
     public static Fraction RandomFraction(){
-        int num = (int)(Math.random()*20)+1;
+        int num = (int)(Math.random()*10)+1;
         int denom = (int)(Math.random()*10)+1;
         Fraction random = new Fraction(num,denom);
         random.reduce();
@@ -113,8 +114,8 @@ public class Fraction{
     public static boolean CompareFraction( Fraction a, Fraction b){
         a.reduce();
         b.reduce();
-        
-        if(subtract(a,b).toDouble() == 0){
+         
+        if(a.toDouble() == b.toDouble()){
             return true;
         }
         return false;
